@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Convert base 10 to base 2</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <style>
+  body{font-family: helvetica,arial,verdana,sans-serif;font-size: 37px;}
+  input{border: 1px solid #ccc;text-align: center;padding: 4px;margin:4px;font-size: 40px}
+  input:focus{background: #f0f0f0;color: #000}
+  </style>
+</head>
+<body>
+<center>
+<h1>Convert Number from base 10 to base 2</h1>
+<input type="text" name="input" id="input" /><input type="button" name="solve" id="solve" value="binary" />
+<p id="output"></p>
+</center>
+
+<script type="text/javascript">
+
+ (function(){  
+
+         document.getElementById("solve").onclick = function(e) {
+
+                 solve(); 
+         }    
+
+         function toBin(nr) {
+ 
+           var output = '';
+
+             for(var i=15;i>=0;i--) {
+
+                  output += (nr>>i)&1;
+             }
+
+           return output;
+         }
+
+
+         function solve() {
+
+              var nr = document.getElementById("input").value;
+
+                  if(isNaN(nr)) {document.getElementById("output").innerHTML ="Error!Is not a number!";return}
+
+                  nr = parseInt(nr);
+
+              var output = toBin(nr);
+
+                  document.getElementById("output").innerHTML = nr + '(10) = ' + output + '(2)';
+         }
+})();
+</script>
+</body>
+</html>
